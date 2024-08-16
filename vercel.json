@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [
       {
-        "src": "/domExample.html",
+        "src": "/public/domExample.html",
         "dest": "/domExample.html"
       }
     ]

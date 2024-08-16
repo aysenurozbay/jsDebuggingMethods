@@ -1,13 +1,13 @@
 {
-    "version": 2,
-    "routes": [
-      {
-        "src": "/public/domExample.html",
-        "dest": "/domExample.html"
-      },
-      {
-        "src": "/src/App.jsx",
-        "dest": "/debuggingMethods"
-      }
-    ]
-  }
+  "version": 2,
+  "routes": [
+    {
+      "src": "/public/domExample.html",
+      "dest": "/domExample.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

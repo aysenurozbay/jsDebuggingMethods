@@ -74,11 +74,7 @@ const DOMBreakpoints = () => {
         </Flex>
         <Flex vertical gap={"large"}>
           <Typography.Title level={3}> KULLANALIM </Typography.Title>
-          <a
-            href="/src/domExample.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/domExample.html" target="_blank" rel="noopener noreferrer">
             DOM Breakpoints Örneklerini Görüntüle
           </a>
         </Flex>

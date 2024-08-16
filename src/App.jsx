@@ -16,7 +16,7 @@ const { Content } = Layout;
 const { Step } = Steps;
 
 export const App = () => {
-  const [current, setCurrent] = useState(9);
+  const [current, setCurrent] = useState(0);
 
   const steps = [
     {

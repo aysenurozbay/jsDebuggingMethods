@@ -1,5 +1,6 @@
 import { Button, Flex, Image, Input, Typography } from "antd";
 import React, { useEffect, useState } from "react";
+import cspviolationCode from "./assets/cspviolationCode.png";
 
 const PolicyViolationExample = () => {
   useEffect(() => {
@@ -63,9 +64,9 @@ const SinkViolationExample = () => {
 const CSPViolationBreakpoints = () => {
   return (
     <div style={{ display: "flex" }}>
-      <Flex justify="space-around" align="center" gap={"small"}>
+      <Flex justify="space-around" align="center" gap={"large"}>
         <Flex vertical>
-          <Typography.Title> CALL STACK</Typography.Title>
+          <Typography.Title> CSP Violation Breakpoints</Typography.Title>
           <Typography.Text>
             İçerik Güvenlik Politikası (Content Security Policy, CSP)
             ihlallerini izlemenize olanak tanır. <br />
@@ -83,6 +84,9 @@ const CSPViolationBreakpoints = () => {
         </Flex>
         <Flex vertical gap={"large"}>
           <Typography.Title level={3}> KULLANALIM </Typography.Title>
+
+          <Image width={350} src={cspviolationCode} />
+
           <SinkViolationExample />
           <PolicyViolationExample />
         </Flex>

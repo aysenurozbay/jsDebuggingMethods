@@ -18,7 +18,7 @@ const CallStack = () => {
     <div style={{ display: "flex" }}>
       <Flex justify="space-around" align="center" gap={"small"}>
         <Flex vertical>
-          <Typography.Title> CALL STACK</Typography.Title>a
+          <Typography.Title> CALL STACK</Typography.Title>
           <Typography.Text>
             JavaScript'te fonksiyonların hangi sırayla çağrıldığını gösteren bir
             veri yapısıdır
@@ -27,12 +27,13 @@ const CallStack = () => {
             çağrıldığını, <br />
             yani kodun yürütülme yolunu takip eder. Bu, özellikle hata ayıklama
             sırasında kodun hangi noktada durduğunu ve oraya nasıl ulaştığını
+            <br />
             anlamak için çok faydalıdır.
           </Typography.Text>
         </Flex>
         <Flex vertical gap={"large"}>
           <Typography.Title level={3}> KULLANALIM </Typography.Title>
-          <Image width={400} src={callStackCode} />
+          <Image width={500} src={callStackCode} />
           <Button onClick={first}>Call Stack </Button>
         </Flex>
       </Flex>

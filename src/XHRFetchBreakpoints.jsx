@@ -33,7 +33,7 @@ const XHRFetchBreakpoints = () => {
         </Flex>
         <Flex vertical gap={"large"}>
           <Typography.Title level={3}> KULLANALIM </Typography.Title>
-          <Image width={400} src={xhrFetchCode} />
+          <Image width={500} src={xhrFetchCode} />
           <Button onClick={fetching}>XHR Fetch Breakpoints Stack </Button>
         </Flex>
       </Flex>

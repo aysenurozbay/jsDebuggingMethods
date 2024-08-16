@@ -51,7 +51,7 @@ const Breakpoint = () => {
           </Flex>
           <Flex vertical>
             <Typography.Title level={5}>
-              Pause on Caught Exceptions{" "}
+              Pause on Caught Exceptions
             </Typography.Title>
             <Typography.Text>
               Kodda bir istisna (hata) <br />
@@ -67,8 +67,7 @@ const Breakpoint = () => {
         </Flex>
         <Flex vertical gap={"large"}>
           <Typography.Title level={3}> KULLANALIM </Typography.Title>
-          <h2>10 + 5 = {calculation}</h2>
-          <Button onClick={handleOnClick}>Calculate</Button>
+
           <Image width={400} src={breakpointsCode} />
           <Button onClick={pauseOnCaughtExceptions}>
             Pause on Uncaught / Caught Exceptions

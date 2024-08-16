@@ -4,6 +4,10 @@
       {
         "src": "/public/domExample.html",
         "dest": "/domExample.html"
+      },
+      {
+        "src": "/src/App.jsx",
+        "dest": "/"
       }
     ]
   }

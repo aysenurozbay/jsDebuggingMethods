@@ -1,42 +1,116 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/* Main */
+
+
+.header {
+   padding-top: 12px ;
+   background-color: #fff;
+}
+.content {
+  margin: 24px 16px;
+  padding: 20px;
+}
+.trigger-btn{
+  font-size: 16px;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+
+}
+
+/* Sider */
+
+.sider {
+  height: 100vh;
+  position: sticky !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  color: #4f6f52;
+  margin: 40px 0;
+  font-size: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.ant-menu-item-selected {
+  background-color: #4f6f52  !important;
+  color: #fff !important;
 }
 
+
+.header-icon {
+  background-color: #d2e3c8;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #4f6f52;
+  cursor: pointer;
+}
+
+
+/* button and, color  */
+
+
+.ant-btn:hover {
+  color: #4f6f52 !important;
+  border-color: #4f6f52 !important;
+}
+.ant-btn-primary{
+  background-color: #4f6f52;
+}
+.ant-btn-primary:hover{
+  color: #173a1a !important;
+  color: #fff !important;
+}
+.primary--color{
+  color: #4f6f52 !important;
+}
+.primary--light--color{
+  color: #739072 !important;
+}
+.secondary--color{
+  color: #86a789 !important;
+}
+.light--color{
+  color: #d2e3c8 !important;
+}
+.gray--color{
+  color: rgb(182, 181, 181) !important;
+}
+
+
+
+/*  Plant List */
+
+.plant-card{
+  flex:1 ;
+  height: 250px;
+  text-align: center;
+}
+
+/* Seller List */
+
+.top-seller ,.featured-seller{
+  flex: 1;
+}
+
+.divider {
+  border: 2px solid green;
+  height: 50px;
+}
 .card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  background-image: linear-gradient(to bottom, #4c7f79, #87e8de);
 }

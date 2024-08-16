@@ -1,57 +1,14 @@
+import { Button, Flex, Image, Input, Typography } from "antd";
 import React, { useEffect, useState } from "react";
-
-const TrustedTypesExample = () => {
-  const [policy, setPolicy] = useState(null);
-
-  useEffect(() => {
-    if (window.trustedTypes) {
-      // Eğer Trusted Types mevcutsa, varsayılan politikayı oluştur
-      let policy;
-      try {
-        policy = trustedTypes.getPolicy("default");
-        if (!policy) {
-          // Varsayılan politika yoksa, yeni bir politika oluştur
-          policy = trustedTypes.createPolicy("default", {
-            createHTML: (input) => input,
-            createScript: (input) => input,
-            createScriptURL: (input) => input,
-          });
-        }
-        setPolicy(policy);
-      } catch (error) {
-        console.error("Trusted Types API hatası:", error);
-      }
-    } else {
-      console.error("Trusted Types API mevcut değil.");
-    }
-  }, []);
-
-  const unsafeContent = '<script>alert("Bu bir güvenlik açığıdır!");</script>';
-
-  const addContent = () => {
-    if (policy) {
-      const trustedHtml = policy.createHTML(unsafeContent);
-      document.getElementById("content").innerHTML = trustedHtml;
-    }
-  };
-
-  return (
-    <div>
-      <h4>Trusted Types Örneği</h4>
-      <button onClick={addContent}>İçeriği Ekle</button>
-      <div id="content">Güvenli içerik buraya eklenecek.</div>
-    </div>
-  );
-};
 
 const PolicyViolationExample = () => {
   useEffect(() => {
     if (window.trustedTypes) {
       try {
-        // Trusted Types politikasını oluşturun veya alın
+        // Trusted Types politikası oluşturun
         const policy = trustedTypes.createPolicy("default", {
           createHTML: (input) => {
-            // İçeriği sadece politikaya uygun şekilde oluştur
+            // Güvenli HTML içeriği oluşturma
             return input;
           },
           createScript: (input) => input,
@@ -63,11 +20,9 @@ const PolicyViolationExample = () => {
         document.getElementById("content").innerHTML =
           policy.createHTML(safeContent);
 
-        // Politikayı ihlal eden içerik
+        // Trusted Types politikası tarafından engellenmemesi gereken güvenli içerik
         const unsafeContent =
           '<script>alert("Bu bir güvenlik açığıdır!");</script>';
-        // Bu içeriği eklemeye çalışırsak, Trusted Types tarafından engellenmelidir
-        // Ancak, bu işlem hata verebilir veya Trusted Types tarafından engellenmeyebilir
 
         // Güvenli olmayan içeriği eklemeyi deneyin
         document.getElementById("content").innerHTML = unsafeContent;
@@ -79,19 +34,59 @@ const PolicyViolationExample = () => {
     }
   }, []);
 
+  return <div></div>;
+};
+const SinkViolationExample = () => {
+  const [userInput, setUserInput] = useState("");
+
+  const handleChange = (event) => {
+    setUserInput(event.target.value);
+  };
+
   return (
-    <div>
-      <h4>Trusted Types Policy İhlali Örneği</h4>
-      <div id="content">İçerik buraya eklenecek.</div>
-    </div>
+    <Flex gap={"large"} vertical>
+      <Input
+        type="text"
+        value={userInput}
+        onChange={handleChange}
+        placeholder="Type something"
+        style={{ width: 400 }}
+      />
+
+      <Flex gap={"large"} align="center">
+        <Typography.Text strong>Output:</Typography.Text>
+        <div dangerouslySetInnerHTML={{ __html: userInput }} />
+      </Flex>
+    </Flex>
   );
 };
-
 const CSPViolationBreakpoints = () => {
   return (
-    <div>
-      <TrustedTypesExample />
-      <PolicyViolationExample />
+    <div style={{ display: "flex" }}>
+      <Flex justify="space-around" align="center" gap={"small"}>
+        <Flex vertical>
+          <Typography.Title> CALL STACK</Typography.Title>
+          <Typography.Text>
+            İçerik Güvenlik Politikası (Content Security Policy, CSP)
+            ihlallerini izlemenize olanak tanır. <br />
+            CSP, web sayfalarının hangi kaynakları yükleyebileceğini kontrol
+            etmek için kullanılan bir güvenlik özelliğidir.
+            <br /> CSP Violation Breakpoints, bu politikaların ihlal edildiği
+            durumlarda kodu durdurarak, <br /> hangi kaynakların veya kodların
+            güvenlik politikalarını aştığını anlamanızı sağlar. <br />* Sink
+            Violations: Trusted Types ile oluşturulmuş güvenilir türlerin bir
+            yere aktarıldığı durumlarda, politikaya uygun olup olmadığını
+            denetler.
+            <br />* Policy Violations: Trusted Types politikalarının ihlal
+            edildiği durumlarda devreye girer ve güvenlik açıklarını gösterir.
+          </Typography.Text>
+        </Flex>
+        <Flex vertical gap={"large"}>
+          <Typography.Title level={3}> KULLANALIM </Typography.Title>
+          <SinkViolationExample />
+          <PolicyViolationExample />
+        </Flex>
+      </Flex>
     </div>
   );
 };

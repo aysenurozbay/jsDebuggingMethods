@@ -1,22 +1,41 @@
-import { Button, Flex } from "antd";
+import { Button, Typography, Layout } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
+import backgroundImg from "./assets/bg.jpg";
+
+const { Content } = Layout;
 
 export const SplashScreen = () => {
   return (
-    <div style={{}}>
-      <Flex justify="center" align="center">
-        <Link
-          to={`debuggingMethods`}
-          style={{
-            backgroundColor: "#fff",
-            padding: 20,
-            borderRadius: 20,
-          }}
-        >
-          Your Name
+    <Layout
+      style={{
+        minHeight: "100vh",
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Content
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+        <Typography.Title level={1}>
+          Chrome JavaScript Debugging Techniques
+        </Typography.Title>
+        <Link to="debuggingMethods">
+          <Button size="large" className="primary--color">
+            Getting Started
+          </Button>
         </Link>
-      </Flex>
-    </div>
+      </Content>
+    </Layout>
   );
 };

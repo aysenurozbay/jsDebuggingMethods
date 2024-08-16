@@ -1,20 +1,16 @@
+import { Button, Flex, Image, Typography } from "antd";
 import React, { useState } from "react";
+import scopeCode from "./assets/scopeCode.png";
 
 const SubtreeModificationExample = () => {
-  const [items, setItems] = useState(["Item 1", "Item 2"]);
-
-  const addItem = () => {
-    setItems([...items, `Item ${items.length + 1}`]);
-  };
+  const [text, setText] = useState("Initial text");
 
   return (
-    <div id="list-container">
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-      <button onClick={addItem}>Add Item</button>
+    <div id="container">
+      <p>{text}</p>
+      <button onClick={() => setText("Text has been changed!")}>
+        Change Text
+      </button>
     </div>
   );
 };
@@ -37,7 +33,7 @@ const AttributeModificationExample = () => {
           transition: "background-color 0.3s ease",
         }}
       ></div>
-      <button onClick={toggleColor}>Toggle Color</button>
+      <Button onClick={toggleColor}>Toggle Color</Button>
     </div>
   );
 };
@@ -52,19 +48,43 @@ const NodeRemovalExample = () => {
   return (
     <div>
       {showElement && <div id="removable">This element will be removed</div>}
-      <button onClick={removeElement}>Remove Element</button>
+      <Button onClick={removeElement}>Remove Element</Button>
     </div>
   );
 };
 
-export const DOMBreakpoints = () => {
+const DOMBreakpoints = () => {
   return (
-    <div>
-      <h3>DOM Breakpoint`&apos;`leri</h3>
-
-      <SubtreeModificationExample />
-      <AttributeModificationExample />
-      <NodeRemovalExample />
+    <div style={{ display: "flex" }}>
+      <Flex justify="space-around" align="center" gap={"small"}>
+        <Flex vertical>
+          <Typography.Title> DOM BREAKPOINTS</Typography.Title>
+          <Typography.Text>
+            belirli bir DOM (Document Object Model) öğesi değiştirildiğinde,
+            silindiğinde veya <br />
+            çocukları güncellendiğinde kodun durmasını sağlayan bir hata
+            ayıklama aracıdır. <br />
+            Bu, özellikle bir sayfada beklenmedik bir DOM manipülasyonu
+            olduğunda, bu değişikliğin kaynağını bulmak için çok kullanışlıdır.
+            <br />
+            &#183; Subtree Modifications <br />
+            &#183; Attribute Modifications <br />
+            &#183; Node Removal
+          </Typography.Text>
+        </Flex>
+        <Flex vertical gap={"large"}>
+          <Typography.Title level={3}> KULLANALIM </Typography.Title>
+          <a
+            href="/src/domExample.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DOM Breakpoints Örneklerini Görüntüle
+          </a>
+        </Flex>
+      </Flex>
     </div>
   );
 };
+
+export default DOMBreakpoints;

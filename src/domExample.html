@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Breakpoints Örnekleri</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #86a789;
+      border-radius: 20px;
+      text-align: center;
+      line-height: 200px;
+      font-size: 20px;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .subtree-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .added-content {
+      width: 200px;
+      height: 200px;
+      background-color: lightgreen;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .changed {
+      background-color: lightcoral;
+      border: 2px solid red;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>DOM Breakpoints Örnekleri</h1>
+  <div class="container">
+    <div>
+      <h2>Subtree Modifications</h2>
+      <button id="addContentButton">Alt İçerik Ekle</button>
+      <div id="subtreeContent" class="box subtree-content">
+      </div>
+    </div>
+    <div>
+      <h2>Attributes Modifications</h2>
+      <button id="changeAttributeButton">Nitelik Değiştir</button>
+      <div id="attributesContent" class="box"> </div>
+
+    </div>
+    <div>
+
+      <h2>Node Removal</h2>
+      <button id="removeNodeButton">Kök Öğeyi Kaldır</button>
+      <div id="nodeRemovalContent" class="box"> </div>
+
+    </div>
+
+
+
+  </div>
+
+  <script>
+    // Subtree Modifications
+    document.getElementById('addContentButton').addEventListener('click', () => {
+      const content = document.getElementById('subtreeContent');
+      const newContent = document.createElement('div');
+      newContent.className = 'added-content';
+      newContent.textContent = 'Yeni alt içerik';
+      content.appendChild(newContent);
+    });
+
+    // Attributes Modifications
+    document.getElementById('changeAttributeButton').addEventListener('click', () => {
+      const content = document.getElementById('attributesContent');
+      // `changed` sınıfını ekleyerek stil değişikliğini yapıyoruz
+      content.classList.add('changed');
+    });
+
+    // Node Removal
+    document.getElementById('removeNodeButton').addEventListener('click', () => {
+      const content = document.getElementById('nodeRemovalContent');
+      content.parentNode.removeChild(content);
+    });
+  </script>
+</body>
+
+</html>

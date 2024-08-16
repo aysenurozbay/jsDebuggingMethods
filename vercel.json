@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "routes": [
+      {
+        "src": "/domExample.html",
+        "dest": "/domExample.html"
+      }
+    ]
+  }
